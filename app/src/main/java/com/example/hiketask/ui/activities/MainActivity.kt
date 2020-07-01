@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var adapter: SearchItemAdapter
+    private lateinit var layoutManager:LinearLayoutManager
     private var isScrolling:Boolean=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         adapter = SearchItemAdapter(this)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        rv_results.layoutManager=layoutManager
+        rv_results.itemAnimator=DefaultItemAnimator()
+        rv_results.adapter=adapter
     }
 
     private fun showLoader(isPaginationProgress: Boolean = false) {
@@ -86,12 +91,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setDataInRecylerView(searchItems:List<PhotoEntity>){
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         adapter.setAttributes(searchItems)
-        rv_results.layoutManager=layoutManager
-        rv_results.itemAnimator=DefaultItemAnimator()
-        rv_results.adapter=adapter
-
         rv_results.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
