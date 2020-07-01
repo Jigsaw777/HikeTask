@@ -11,6 +11,6 @@ data class MainEntity(
     val perPage: Int,
     @SerializedName("total")
     val total: String,
-    @SerializedName("photos")
+    @SerializedName("photo")
     val photos: List<PhotoEntity>
 )

@@ -31,7 +31,7 @@ class MainViewModel : ViewModel() {
         val request = GetSearchItemsRequest(pageNumber, searchTerm)
         getImageResultsUsecase.getImageResults(request).subscribeOn(Schedulers.io())
             .subscribe({
-                searchResultItems.postValue(it)
+                searchResultItems.postValue(it.photos)
             }, {
                 errorLD.postValue(it.localizedMessage)
             }).let { compositeDisposable.add(it) }

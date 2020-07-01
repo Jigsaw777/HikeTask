@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity"
-    android:padding="@dimen/spacing_8">
+    android:padding="@dimen/spacing_8"
+    android:background="@color/grey">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="0dp"
