@@ -3,4 +3,5 @@
 
     <string name="welcome_text">Hi, Welcome to the search app. Please enter a string to continue.</string>
     <string name="et_hint">Enter a text</string>
+    <string name="error_text">Error. Please try again</string>
 </resources>
