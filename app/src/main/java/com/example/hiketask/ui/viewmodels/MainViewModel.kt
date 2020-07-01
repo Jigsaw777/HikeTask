@@ -17,6 +17,9 @@ class MainViewModel : ViewModel() {
         val getImageResultsUsecase = GetImageResultsUsecase(repo)
     }
 
+    private var pageNumber:Int = 1
+    var searchTerm:String=""
+
     private val compositeDisposable = CompositeDisposable()
 
     private val searchResultItems = MutableLiveData<MainEntity>()
@@ -27,7 +30,9 @@ class MainViewModel : ViewModel() {
     val errorLiveData: LiveData<String>
         get() = errorLD
 
-    fun getSearchresults(searchTerm: String, pageNumber: Int) {
+    fun getSearchresults(searchTerm: String, isFetch:Boolean=false) {
+        if(isFetch)
+            pageNumber+=1
         val request = GetSearchItemsRequest(pageNumber, searchTerm)
         getImageResultsUsecase.getImageResults(request).subscribeOn(Schedulers.io())
             .subscribe({

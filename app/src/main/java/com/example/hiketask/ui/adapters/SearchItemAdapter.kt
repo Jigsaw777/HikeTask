@@ -11,10 +11,13 @@ import com.example.hiketask.ui.viewholders.SearchItemVH
 class SearchItemAdapter(private val context: Context) : RecyclerView.Adapter<SearchItemVH>() {
 
     private var searchItems = mutableListOf<PhotoEntity>()
+    private var size=0
 
     fun setAttributes(items: List<PhotoEntity>) {
+        size=searchItems.size
         searchItems.addAll(items.toMutableList())
         notifyDataSetChanged()
+//        notifyItemRangeInserted(size,searchItems.size)
     }
 
     fun isEmpty():Boolean{
